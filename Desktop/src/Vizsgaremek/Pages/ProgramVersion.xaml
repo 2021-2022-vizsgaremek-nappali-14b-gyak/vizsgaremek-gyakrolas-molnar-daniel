@@ -11,8 +11,12 @@
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
             <Image Source="/Icons/back_icon.png" Height="48" PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp" />
         </StackPanel>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 5 20 5">
             <TextBlock x:Name="WelcomeText" Text="Program verzió"></TextBlock>
+            <StackPanel HorizontalAlignment="Left">
+                <Label>Program verzió: </Label>
+                <TextBox x:Name="txtVersion" Text="{Binding Path=Version}"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </UserControl>

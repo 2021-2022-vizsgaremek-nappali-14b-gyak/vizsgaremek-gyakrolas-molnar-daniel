@@ -11,31 +11,27 @@ namespace Vizsgaremek.Models
     public class ProgramInfo
     {
         private Version version;
-        private string authors;
-
-        public Version Version
-        {
-            get
-            {
-                var assembly = Assembly.GetExecutingAssembly();
-                var assemblyVerzio = assembly.GetName().Version;
-                return assemblyVerzio;
-            }
-        }
-
-        public string Authors
-        {
-            get
-            {
-                return "";
-            }
-        }
+        private string title;
+        private string description;
+        private string company;
 
         public ProgramInfo()
-        { }
+        {
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
 
 
+            foreach (Attribute attr in Attribute.GetCustomAttributes(assembly))
+            {
+                if (attr.GetType() == typeof(AssemblyTitleAttribute))
+                    title = ((AssemblyTitleAttribute)attr).Title;
+                else if (attr.GetType() == typeof(AssemblyDescriptionAttribute))
+                    description = ((AssemblyDescriptionAttribute)attr).Description;
+                else if (attr.GetType() == typeof(AssemblyCompanyAttribute))
+                    company = ((AssemblyCompanyAttribute)attr).Company;
 
+            }
+        }
 
     }
 }

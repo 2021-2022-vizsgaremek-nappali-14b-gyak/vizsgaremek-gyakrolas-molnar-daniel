@@ -17,13 +17,13 @@ namespace Vizsgaremek.Models.Tests
         {
             // arrange
             ProgramInfo programInfo = new ProgramInfo();
-            string expected = "0.0.2";
+            Version expected = new Version(0, 0, 3, 0);
 
             // act
-            string actual = programInfo.Version;
+            Version actual = programInfo.Version;
 
             // assert
-            Assert.AreEqual(expected, actual, "Version is not 0.0.2");
+            Assert.AreEqual(expected, actual, "Version is not 0.0.3.0");
         }
     }
 }

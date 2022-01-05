@@ -10,32 +10,65 @@ namespace Vizsgaremek.Models
 {
     public class ProgramInfo
     {
-        private string version;
+        private Version version;
+        private string title;
+        private string description;
+        private string company;
+
         private string authors;
 
-        public string Version
+        public Version Version
         {
             get
             {
                 var assembly = Assembly.GetExecutingAssembly();
                 var assemblyVerzio = assembly.GetName().Version;
-                return assemblyVerzio.ToString();
+                return assemblyVerzio;
             }
         }
 
-        public string Authors
+        public string Title
         {
             get
             {
-                return "";
+                return title;
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+        }
+        public string Company
+        {
+            get
+            {
+                return company;
             }
         }
 
+
+
         public ProgramInfo()
-        { }
+        {
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
 
 
+            foreach (Attribute attr in Attribute.GetCustomAttributes(assembly))
+            {
+                if (attr.GetType() == typeof(AssemblyTitleAttribute))
+                    title = ((AssemblyTitleAttribute)attr).Title;
+                else if (attr.GetType() == typeof(AssemblyDescriptionAttribute))
+                    description = ((AssemblyDescriptionAttribute)attr).Description;
+                else if (attr.GetType() == typeof(AssemblyCompanyAttribute))
+                    company = ((AssemblyCompanyAttribute)attr).Company;
 
+            }
+        }
 
+        
     }
 }

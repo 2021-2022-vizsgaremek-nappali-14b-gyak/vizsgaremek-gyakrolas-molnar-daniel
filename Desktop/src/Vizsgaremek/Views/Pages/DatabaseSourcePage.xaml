@@ -21,7 +21,7 @@
                 </ListBox>
                 <StackPanel Orientation="Horizontal">
                     <Label>A választott adatbázis</Label>
-                    <TextBlock FontWeight="Bold" x:Name="txtSelectedDatabaseSource" Text="{Binding Path=SelectedDatabaseSource}">
+                    <TextBlock FontWeight="Bold" Margin="2 5 2 2" x:Name="txtSelectedDatabaseSource" Text="{Binding Path=SelectedDatabaseSource}">
                         
                     </TextBlock>
                 </StackPanel>

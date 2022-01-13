@@ -8,10 +8,10 @@
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <UseWPF>true</UseWPF>
 	  <Version>0.0.3.0</Version>
-	  <Authors>Molnár Dániel</Authors>
+	  <Authors>Hámori Tamás Viktor</Authors>
 	  <Company>Vasvári</Company>
-	  <Product />
-	  <Description>Program verzió navigáció működik</Description>
+	  <Product>Vizsgaremek</Product>
+	  <Description>Program verzió, név, cég, leírás és navigáció működik.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,7 +29,6 @@
     <Folder Include="Converters\" />
     <Folder Include="Validations\" />
     <Folder Include="Resources\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

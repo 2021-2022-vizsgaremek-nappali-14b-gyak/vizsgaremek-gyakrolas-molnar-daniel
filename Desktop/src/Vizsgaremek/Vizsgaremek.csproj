@@ -8,7 +8,7 @@
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <UseWPF>true</UseWPF>
 	  <Version>0.0.3.0</Version>
-	  <Authors>Hámori Tamás Viktor</Authors>
+	  <Authors>Molnár Dániel</Authors>
 	  <Company>Vasvári</Company>
 	  <Product>Vizsgaremek</Product>
 	  <Description>Program verzió, név, cég, leírás és navigáció működik.</Description>

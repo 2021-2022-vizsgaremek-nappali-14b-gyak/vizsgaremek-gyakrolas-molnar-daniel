@@ -15,15 +15,13 @@ namespace Vizsgaremek.ViewModels.Tests
         [TestMethod()]
         public void DatabaseSourceViewModelTestLocalhost()
         {
-            
-                DatabaseSourceViewModel databaseSourceViewModel = new DatabaseSourceViewModel();
-                databaseSourceViewModel.SelectedDatabaseSource = "localhost";
-                DbSource expectedDbSource = DbSource.LOCALHOST;
+            DatabaseSourceViewModel databaseSourceViewModel = new DatabaseSourceViewModel();
+            databaseSourceViewModel.SelectedDatabaseSource = "localhost";
+            DbSource expectedDbSource = DbSource.LOCALHOST;
 
-                DbSource actualDbSource = databaseSourceViewModel.DbSource;
+            DbSource actualDbSource = databaseSourceViewModel.DbSource;
 
-                Assert.AreEqual(expectedDbSource, actualDbSource, "A kiválasztott adatbázis a 'localhost', de nem váltott át DbSource.LOCALHOST-ra");
-            
+            Assert.AreEqual(expectedDbSource, actualDbSource, "A kiválasztott adatbázis a 'localhost', de nem váltott át DbSource.LOCALHOST-ra");
 
         }
 
@@ -33,18 +31,22 @@ namespace Vizsgaremek.ViewModels.Tests
             DatabaseSourceViewModel databaseSourceViewModel = new DatabaseSourceViewModel();
             databaseSourceViewModel.SelectedDatabaseSource = "devops";
             DbSource expectedDbSource = DbSource.DEVOPS;
+
             DbSource actualDbSource = databaseSourceViewModel.DbSource;
+
             Assert.AreEqual(expectedDbSource, actualDbSource, "A kiválasztott adatbázis a 'devops', de nem váltott át DbSource.DEVOPS-ra");
-            
+
         }
 
         [TestMethod()]
         public void DatabaseSourceViewModelTestNone()
         {
             DatabaseSourceViewModel databaseSourceViewModel = new DatabaseSourceViewModel();
-            databaseSourceViewModel.SelectedDatabaseSource = "none";
+            databaseSourceViewModel.SelectedDatabaseSource = "";
             DbSource expectedDbSource = DbSource.NONE;
+
             DbSource actualDbSource = databaseSourceViewModel.DbSource;
+
             Assert.AreEqual(expectedDbSource, actualDbSource, "A kiválasztott adatbázis a '', de nem váltott át DbSource.NONE-ra");
 
         }

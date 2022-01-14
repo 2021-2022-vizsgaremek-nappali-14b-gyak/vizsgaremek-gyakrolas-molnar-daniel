@@ -15,7 +15,8 @@
             <Grid x:Name="ContentStatus" Height="30" VerticalAlignment="Bottom" Background="Silver">
                 <StackPanel Orientation="Horizontal">
                     <Label>Kiválasztott adatforrás: </Label>
-                    <TextBlock x:Name="SelectedSource" Text="{Binding Path=SelectedSource}"></TextBlock>
+                    <TextBlock x:Name="SelectedSource" Text="{Binding Path=SelectedSource}">
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </Grid>

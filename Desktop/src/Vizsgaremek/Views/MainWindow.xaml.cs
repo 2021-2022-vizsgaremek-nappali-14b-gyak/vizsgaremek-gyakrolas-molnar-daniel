@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Vizsgaremek.ViewModels;
 using Vizsgaremek.Views.Navigation;
 using Vizsgaremek.Views.Pages;
 
@@ -23,17 +23,32 @@ namespace Vizsgaremek
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        MainWindowViewModel mainWindowViewModel;
+        DatabaseSourceViewModel databaseSourceViewModel;
+
         public MainWindow()
         {
+            mainWindowViewModel = new MainWindowViewModel();
+            databaseSourceViewModel = new DatabaseSourceViewModel();
+            mainWindowViewModel.SelectedSource = databaseSourceViewModel.DisplayedDatabaseSource;
+
+            databaseSourceViewModel.ChangeDatabaseSource += DatabaseSourceViewModel_ChangeDatabaseSource;
+
             InitializeComponent();
+            this.DataContext = mainWindowViewModel;
             // Statikus osztály a Navigate
-            // Eltárolja a nyitó ablakt, hogy azon tudjuk módosítani a "page"-ket
+            // Eltárolja a nyitó ablakot, hogy azon tudjuk módosítani a "page"-ket
             Navigate.mainWindow = this;
-            // Létrehozzuk a nyitó "UsuerControl" (WelcomPage)
+            // Létrehozzuk a nyitó "UserControl" (WelcomPage)
             WelcomePage welcomePage = new WelcomePage();
-            // Megjelnítjük a WelcomePage-t
+            // Megjelenítjük a WelcomePage-t
             Navigate.Navigation(welcomePage);
+        }
+
+        private void DatabaseSourceViewModel_ChangeDatabaseSource(object sender, EventArgs e)
+        {
+            DatabaseSourceEventArg dsea = (DatabaseSourceEventArg) e;
+            mainWindowViewModel.SelectedSource = dsea.DatabaseSource;
         }
 
         /// <summary>
@@ -56,8 +71,8 @@ namespace Vizsgaremek
                         Close();
                         break;
                     case "lviDatabaseSourceSelection":
-                        DatabaseSourcePage databaseSourcePage = new DatabaseSourcePage();
-                        Navigate.Navigation(databaseSourcePage);
+                        DatabaseSourcePage databaseSourcePage = new DatabaseSourcePage(databaseSourceViewModel);
+                        Navigate.Navigation(databaseSourcePage); 
                         break;
                     case "lviProgramVersion":
                         ProgramVersion programVersion = new ProgramVersion();
